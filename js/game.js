@@ -31,8 +31,6 @@ var Game = new (function() {
   function init() {
     $('#scorenr').html(getScore());
     $('#tweeturl, #facebook').hide();
-    numberOfHints = 3;
-    $('#numberOfHints').html(numberOfHints);
 
     if (!window.isWebApp)
       $('#app').hide();
@@ -231,6 +229,7 @@ var Game = new (function() {
     clearTimeouts();
     if (window.STOPPED) return;
     startedTutorial = false;
+    initNoh();
     $('#undo').closest('.iconcon').css('display', 'inline-block');
     $('#menugrid').addClass('hidden');
     $('#board').removeClass('hidden');
@@ -241,6 +240,7 @@ var Game = new (function() {
     $('#bar [data-action="help"]').removeClass('hidden wiggle');
     $('#bar [data-action="help"]').removeClass('subtleHint');
     $('#boardsize').html('<span>' + puzzle.size + ' x ' + puzzle.size + '</span>');
+
     grid = new Grid(puzzle.size, puzzle.size);
     lastSize = puzzle.size;
 
@@ -261,6 +261,8 @@ var Game = new (function() {
     undoStack = [];
     undone = false;
     gameEnded = false;
+
+    initNoh();
 
     setTimeout(showGame, 0);
   }
@@ -510,6 +512,13 @@ var Game = new (function() {
     } else {
       $('#numberOfHints').html(numberOfHints);
     }
+  }
+
+  function initNoh() {
+    numberOfHints = 3;
+    $('#help').css('opacity', '1');
+      $('#numberOfHints').show();
+      $('#numberOfHints').html(numberOfHints);
   }
 
   function checkForLevelComplete() {
