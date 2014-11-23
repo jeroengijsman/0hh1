@@ -546,7 +546,7 @@ var Game = new (function() {
           break;
         }
       }
-      if (invalidFullRowOrColumnFound) {
+      if (invalidFullRowOrColumnFound && numberOfHints != 0) {
         $('#bar [data-action="help"]').addClass('subtleHint');
         endSubtleHintTOH = setTimeout(function() {
           $('#bar [data-action="help"]').removeClass('subtleHint');
