@@ -26,10 +26,13 @@ var Game = new (function() {
       undoStack = [],
       undone = false,
       gameEnded = false;
+      numberOfHints = null;
 
   function init() {
     $('#scorenr').html(getScore());
     $('#tweeturl, #facebook').hide();
+    numberOfHints = 3;
+    $('#numberOfHints').html(numberOfHints);
 
     if (!window.isWebApp)
       $('#app').hide();
@@ -471,9 +474,12 @@ var Game = new (function() {
         clearTimeout(checkTOH);
         if (Tutorial.active && !Tutorial.hintAllowed())
           return;
+        if (numberOfHints == 0)
+          return;
         if (grid.hint.visible)
           grid.hint.clear();
         else {
+          updateNoh();
           grid.hint.clear();
           grid.hint.next();
         }
@@ -493,6 +499,16 @@ var Game = new (function() {
       case 'about':
         showAbout();
         break;
+    }
+  }
+
+  function updateNoh() {
+    numberOfHints -= 1;
+    if(numberOfHints == 0) { 
+      $('#help').css('opacity', '0.2');
+      $('#numberOfHints').hide();
+    } else {
+      $('#numberOfHints').html(numberOfHints);
     }
   }
 

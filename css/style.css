@@ -181,7 +181,7 @@ p {
 #back.icon { background-image: url(../img/close.png); }
 #retry.icon { background-image: url(../img/spinner.png); }
 #undo.icon { background-image: url(../img/history.png); }
-#help.icon { background-image: url(../img/eye.png); }
+#help.icon { position: relative; background-image: url(../img/eye.png); }
 #next.icon { background-image: url(../img/arrow-right.png); }
 #tweet.icon { background-image: url(../img/twitter.png); }
 #facebookicon.icon { background-image: url(../img/facebook.png); }
@@ -364,6 +364,17 @@ html body .show01 .tile .inner:after {
   -ms-animation: completed 2s ease-in;
   transform-origin: center center;
   animation: completed 2s ease-in;
+}
+
+#numberOfHints {
+  width: 30px;
+  height: 30px;
+  color: #fff;
+  right: -20px;
+  top: -4px;
+  font-family: 'Josefin Sans', sans-serif;
+  position: absolute;
+  font-size: 20px;
 }
 
 @-webkit-keyframes wiggle {
